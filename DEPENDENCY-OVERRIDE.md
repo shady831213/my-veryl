@@ -40,3 +40,12 @@ Raw local runs live under `.run/extraction`; they are not published design
 snapshots. Published consumers without local overrides retain their existing
 qualified recipes. Recheck the reproducer against a future official release
 before retiring the patch or this repository.
+
+The subsequent upstream CI run has three failures: a Rust1.100 Clippy diagnostic
+in unchanged parser code and compiler-launch failures in both Windows jobs.
+See the [current CI investigation](UPSTREAM.md#pr3710-ci-follow-up-2026-11-16).
+The local Rust1.97 qualification above is not a claim that upstream CI passed.
+
+The [CI compatibility follow-up](CI-COMPATIBILITY.md) is now pushed as separate
+commits. It changes neither the identity fix nor this repository's backport bytes;
+the current Rust1.97 recipes do not need those upstream CI-only follow-ups.
