@@ -19,6 +19,17 @@ and `release-verylup`. `generic-wide` preserves the PCIe project's existing two
 patches. `generic-wide-struct` additionally preserves PDMA's member-width fix.
 Extraction does not qualify either project's switch to the other recipe.
 
+Library development with a root Git dependency override and a transitive
+reference needs the additional `0.22.1-generic-wide-struct-override` recipe:
+
+```sh
+export PATH="$(bash veryl.sh --toolchain 0.22.1-generic-wide-struct-override --print-bin-dir):$PATH"
+```
+
+It fixes repository identity for that native dependency graph. The original two
+recipes remain unchanged for independently pinned consumers. No project is
+automatically upgraded. See [the fix and qualification](DEPENDENCY-OVERRIDE.md).
+
 The launcher verifies source and ordered patch hashes, builds with zero patch
 fuzz, serializes installation, records provenance and verifies cached executable
 bytes. `MY_VERYL_CACHE_DIR` selects a compiler cache; the default is `.run/tools`

@@ -12,6 +12,7 @@ Checked 2026-11-16. Official release remains v0.22.1; master is
 | [3689](https://github.com/veryl-lang/veryl/issues/3689) / [3704](https://github.com/veryl-lang/veryl/pull/3704) | Conditional constant arrays; open, not added to recipes |
 | [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; open, not added to recipes |
 | [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; open, not added to recipes |
+| [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; new on Nov16, explicit development recipe only; upstream CI/review pending |
 
 PRs 3703-3706 have unchanged heads, no human reviews, and each has 21 successful
 checks plus one skipped Dependabot task. Those are existing CI results, not new

@@ -25,6 +25,12 @@ Patch order:
 3. `veryl-struct-member-width.patch`: truncate nonliteral member expressions
    before concatenating a struct in native simulation. Does not change emitted
    SystemVerilog. The independent multi-field reproducer is preserved.
+4. `veryl-dependency-override.patch`: repository identity excludes the root-only
+   local loading hint; native transitive namespaces and metadata graph edges
+   agree. This extraction-time discovery is tracked by
+   [#3709](https://github.com/veryl-lang/veryl/issues/3709) /
+   [#3710](https://github.com/veryl-lang/veryl/pull/3710). Only the explicit
+   four-patch development recipe includes it; existing recipes are unchanged.
 
 Inherited evidence does not prove a new extraction or consumer migration passed.
 Record new runs separately, including discovered counts and compiler identities.
