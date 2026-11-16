@@ -41,11 +41,14 @@ snapshots. Published consumers without local overrides retain their existing
 qualified recipes. Recheck the reproducer against a future official release
 before retiring the patch or this repository.
 
-The subsequent upstream CI run has three failures: a Rust1.100 Clippy diagnostic
+The initial upstream CI run had three failures: a Rust1.100 Clippy diagnostic
 in unchanged parser code and compiler-launch failures in both Windows jobs.
 See the [current CI investigation](UPSTREAM.md#pr3710-ci-follow-up-2026-11-16).
 The local Rust1.97 qualification above is not a claim that upstream CI passed.
 
-The [CI compatibility follow-up](CI-COMPATIBILITY.md) is now pushed as separate
-commits. It changes neither the identity fix nor this repository's backport bytes;
-the current Rust1.97 recipes do not need those upstream CI-only follow-ups.
+The [CI compatibility follow-up](CI-COMPATIBILITY.md) passed on0801ab27. Upstream
+then merged its own compatibility repair in PR3708 and requested a rebase.
+The rebased44fa020c contains only the original identity fix and regressions;
+its patch ID matches a9f7a444. This repository's backport bytes and consumer
+recipes are unchanged. The linked report tracks qualification of each head
+separately rather than inheriting earlier results.

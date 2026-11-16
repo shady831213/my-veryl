@@ -1,7 +1,7 @@
 # Upstream tracking
 
 Checked 2026-11-16. Official release remains v0.22.1; master is
-`56c9c11789c85b4fb633c456f7889197ee9b325f`. Status is not a fresh compiler test.
+`e86d2851b456c2b31d27f67a752511f5783ed6dc`. Status is not a fresh compiler test.
 
 | Issue / PR | State and action |
 | --- | --- |
@@ -12,7 +12,7 @@ Checked 2026-11-16. Official release remains v0.22.1; master is
 | [3689](https://github.com/veryl-lang/veryl/issues/3689) / [3704](https://github.com/veryl-lang/veryl/pull/3704) | Conditional constant arrays; open, not added to recipes |
 | [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; open, not added to recipes |
 | [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; open, not added to recipes |
-| [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. Original head18 success/3 fail/1 skipped. CI compatibility fixes pushed at c5f8f2ce; new CI pending. See [repair evidence](CI-COMPATIBILITY.md). No human review yet |
+| [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. Rebased at maintainer request after PR3708 merged. Head `44fa020c` contains only the identity fix and its regressions: 21 checks successful, 1 Dependabot skip, 0 failures; CodSpeed eight benchmarks untouched. Open and conflict-free, not approved or merged. See [repair evidence](CI-COMPATIBILITY.md) |
 
 PRs 3703-3706 have unchanged heads, no human reviews, and each has 21 successful
 checks plus one skipped Dependabot task. Those are existing CI results, not new
@@ -41,12 +41,18 @@ attempt1. All checks have completed; the three failures are:
   that the new dependency-override test failed, nor that Windows tests passed.
 
 The logs identify CI/toolchain compatibility blockers, not a demonstrated
-override-semantic regression. No clean-base Windows CI reproduction or local
-Rust1.100 full-workspace reproduction has been performed in this follow-up;
-do not overstate the remaining causal evidence or turn the red checks into PASS.
-At the initial investigation checkpoint no PR edits or CI reruns had been made.
+override-semantic regression. At the initial investigation checkpoint, no
+clean-base Windows CI reproduction, local Rust1.100 full-workspace reproduction,
+PR edits or CI reruns had been performed. Later reproduction and repairs are
+recorded separately; do not reinterpret the original failed run as PASS.
 The subsequent user-authorized [repair](CI-COMPATIBILITY.md) adds separate CI
 compatibility commits without lint suppression, recipe changes or consumer pin
 updates. Local receipts are under `.run/followup-20261116-ci` with
 SHA256SUMS; the older CLI returned an empty combined failed log, so the evidence
 uses the individual GitHub job-log API responses instead.
+
+During the follow-up, upstream merged PR3708 with equivalent lint fixes and a
+Windows sccache v0.16.0 pin. Our fully green0801ab27 then conflicted with master.
+The maintainer's rebase request is handled by replaying only the original identity
+commit onto e86d2851. The old compatibility history and run evidence remain
+available; they are no longer changes proposed by PR3710.
