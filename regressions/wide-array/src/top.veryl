@@ -1,0 +1,17 @@
+module Read (index: input logic<2>, data: input logic<256> [4], result: output logic<189>) {
+    assign result = data[index][188:0];
+}
+#[test(wide_array_slice)]
+module Top {
+    inst clk: $tb::clock_gen #(period: 10);
+    var index: logic<2>;
+    var data: logic<256> [4];
+    var result: logic<189>;
+    inst dut: Read (index, data, result);
+    initial {
+        index = 0;
+        for i in 0..4 { data[i] = '1; }
+        clk.next();
+        $assert(result == 189'h1fffffffffffffffffffffffffffffffffffffffffffffff, "WIDE_READ");
+    }
+}

@@ -1,0 +1,19 @@
+interface MaskPort::<N: u32 = 4> { var mask: logic<N>; }
+module WidthParent::<N: u32 = 8> (result: output logic<N>) {
+    inst port: MaskPort::<N>;
+    assign port.mask = '1;
+    for i in 0..N :row { assign result[i] = port.mask[i]; }
+}
+#[test(width_forwarding)]
+module Top {
+    inst clk: $tb::clock_gen #(period: 10);
+    var r4: logic<4>;
+    var r16: logic<16>;
+    inst small_parent: WidthParent::<4> (result: r4);
+    inst large_parent: WidthParent::<16> (result: r16);
+    initial {
+        clk.next();
+        $assert(r4 == 4'hf, "WIDTH4");
+        $assert(r16 == 16'hffff, "WIDTH16");
+    }
+}

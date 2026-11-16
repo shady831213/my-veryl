@@ -1,0 +1,2 @@
+# Unified-diff context has significant single-space lines. Preserve recipe bytes.
+patches/*.patch -whitespace
