@@ -10,11 +10,11 @@ qualification; today's isolated repair tests are recorded below.
 | [3671](https://github.com/veryl-lang/veryl/issues/3671) / [3672](https://github.com/veryl-lang/veryl/pull/3672) | Merged after the release; wide-array backport retained |
 | [3576](https://github.com/veryl-lang/veryl/issues/3576) | Open; last reply is our Nov5 retest. Keep the consumer's explicit no-reuse qualification policy |
 | [3697](https://github.com/veryl-lang/veryl/issues/3697) / [3703](https://github.com/veryl-lang/veryl/pull/3703) | Four-state equality; merged Nov17 as `b8b90bc9`, issue closed. Not in v0.22.1 or the selected downstream recipes; no consumer upgrade performed |
-| [3689](https://github.com/veryl-lang/veryl/issues/3689) / [3704](https://github.com/veryl-lang/veryl/pull/3704) | Conditional constant arrays; maintainer regression reproduced and fixed, rebased onto `b8b90bc9`, pushed as `22aaaa9a`. Conflict resolved, new local gates pass, fresh upstream CI pending. PR and issue replies sent. Not added to recipes |
+| [3689](https://github.com/veryl-lang/veryl/issues/3689) / [3704](https://github.com/veryl-lang/veryl/pull/3704) | Conditional constant arrays; maintainer regression repaired on `22aaaa9a`. Remote tests passed, but Windows ARM64 post-job cleanup failed. Maintainer rerun requested. Not added to recipes |
 | [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; open, not added to recipes |
 | [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; open, not added to recipes |
 | [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. Rebased at maintainer request after PR3708 merged. Head `44fa020c` contains only the identity fix and its regressions: 21 checks successful, 1 Dependabot skip, 0 failures; CodSpeed eight benchmarks untouched. Open and conflict-free, not approved or merged. See [repair evidence](CI-COMPATIBILITY.md) |
-| [3714](https://github.com/veryl-lang/veryl/issues/3714) / [3715](https://github.com/veryl-lang/veryl/pull/3715) | New, independent command-only Git backend Clippy failure reproduced on unmodified master. Fix `d62661c0` preserves short-circuit behavior and adds three feature-subset CI checks; local checks and metadata77 pass. Fresh upstream CI pending; not added to recipes |
+| [3714](https://github.com/veryl-lang/veryl/issues/3714) / [3715](https://github.com/veryl-lang/veryl/pull/3715) | Independent command-only Git backend Clippy failure reproduced on unmodified master. Fix `d62661c0` preserves short-circuit behavior and adds three feature-subset CI checks; local checks and metadata77 pass. Remote CI green (21 successes, one skip); not added to recipes |
 
 PRs 3705, 3706 and 3710 have unchanged heads, and each has 21 successful
 checks plus one skipped Dependabot task. Those are existing CI results, not new
@@ -57,10 +57,12 @@ the original failure is retained, not treated as a passing check.
 
 [Maintainer reply](https://github.com/veryl-lang/veryl/pull/3704#issuecomment-6971150525)
 and [issue update](https://github.com/veryl-lang/veryl/issues/3689#issuecomment-6971156420)
-have been sent. GitHub now reports MERGEABLE. Fresh
-[Regression44252629176](https://github.com/veryl-lang/veryl/actions/runs/44252629176)
-and [CodSpeed44252629048](https://github.com/veryl-lang/veryl/actions/runs/44252629048)
-are pending; old-head CI is not qualification of this repair. Reproducer patches,
+have been sent. In [Regression attempt 1, Windows ARM64](https://github.com/veryl-lang/veryl/actions/runs/44252629176/job/134626715163),
+`Run tests` succeeded. The only failure was the setup-dev-drive post-job cleanup:
+Get-VHD was unavailable during removal, after the tests and sccache stats.
+The workflow is red, but it does not report a compiler regression.
+A [failed-job rerun was requested](https://github.com/veryl-lang/veryl/pull/3704#issuecomment-6971532058).
+Reproducer patches,
 RED/GREEN logs, commands, versions and source hashes are retained locally under
 `.run/followup-20261118`.
 
@@ -83,7 +85,8 @@ cfg-selected boolean bindings while preserving backend priority and short-circui
 behavior. It adds command-only, gitoxide-only and combined strict Clippy checks
 to the existing CI lint job, without suppression or dependency changes. All three
 checks, metadata 77 and formatting PASS locally; command-only strict Clippy also
-PASS on Rust1.97. A backlink was posted on the issue. Fresh remote CI is pending.
+PASS on Rust1.97. A backlink was posted on the issue. Remote CI on this head
+finished with 21 successes and one skip.
 
 Issue3576 remains open with the Nov5 retest as the last reply. Keep explicit
 no-reuse qualification unchanged. The newly merged four-state fix likewise

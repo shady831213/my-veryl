@@ -31,14 +31,14 @@ New tests preserve unknown external selectors, genuine select errors and known/
 X/Z values through instances. Analyzer 1473 pass / 17 existing ignored, simulator
 1429, emitter 94, metadata 77, fmt and combined strict Clippy pass on Rust1.100;
 focused analyzer 2 / simulator 3 also pass on Rust1.97. PR/issue replies sent.
-New CI pending; do not reuse the old head's green checks as evidence. See
+Windows ARM64 tests passed but post-job Dev Drive cleanup failed; rerun requested. See
 UPSTREAM.md and local .run/followup-20261118 receipts; repair checkout is
 .run/conditional-review.
 
 Separate upstream-baseline command-only metadata Clippy failure is issue3714 /
 PR3715 d62661c0, checkout .run/git-exists-review. Three backend-subset strict checks,
 metadata 77 and fmt pass; Rust1.97 command-only check also passes. CI checks added
-without lint suppression; new remote CI pending. Not folded into 3704 or recipes.
+without lint suppression; remote CI green (21 successes, one skip). Not folded into 3704 or recipes.
 PR3703 merged / issue3697 closed; 3705/3706/3710 unchanged and mergeable;
 3576 has no new reply.
 No compiler recipe, dependency pin, installed compiler or consumer change.
