@@ -17,8 +17,33 @@
 - Use per-checkout Cargo target directories for qualification. A cache hit is not
   proof that a different checkout was rebuilt; validate source provenance and
   generated fixture paths before accepting comparison binaries.
+- Check relevant feature subsets as well as the combined workspace graph.
+  Dev-dependency feature unification can hide defects in an isolated library's
+  default backend; record the actual feature graph instead of treating one
+  successful Clippy invocation as covering all supported configurations.
 
-## Current repair
+## Current Follow-up
+
+Nov18 repair: PR3704 rebased onto b8b90bc9 and pushed as 22aaaa9a. Maintainer's
+example is RED on original efb1990b, GREEN on unmodified master and repaired head.
+The missing !overridden guard re-evaluated caller VarIds against the child table.
+New tests preserve unknown external selectors, genuine select errors and known/
+X/Z values through instances. Analyzer 1473 pass / 17 existing ignored, simulator
+1429, emitter 94, metadata 77, fmt and combined strict Clippy pass on Rust1.100;
+focused analyzer 2 / simulator 3 also pass on Rust1.97. PR/issue replies sent.
+New CI pending; do not reuse the old head's green checks as evidence. See
+UPSTREAM.md and local .run/followup-20261118 receipts; repair checkout is
+.run/conditional-review.
+
+Separate upstream-baseline command-only metadata Clippy failure is issue3714 /
+PR3715 d62661c0, checkout .run/git-exists-review. Three backend-subset strict checks,
+metadata 77 and fmt pass; Rust1.97 command-only check also passes. CI checks added
+without lint suppression; new remote CI pending. Not folded into 3704 or recipes.
+PR3703 merged / issue3697 closed; 3705/3706/3710 unchanged and mergeable;
+3576 has no new reply.
+No compiler recipe, dependency pin, installed compiler or consumer change.
+
+## Previous Repair
 
 PR3710 head `44fa020c` on upstream `e86d2851` replays only the original identity
 fix after the maintainer's rebase request. Duplicate CI/lint changes are dropped.
