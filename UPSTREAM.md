@@ -1,8 +1,8 @@
 # Upstream tracking
 
-Checked 2026-11-18. Official release remains v0.22.1; master is
-`b8b90bc966967a140404e72cf3ade77d80442853`. Status alone is not compiler
-qualification; today's isolated repair tests are recorded below.
+Checked 2026-11-19. Official release remains v0.22.1; master is
+`7f226bcf73de2337e668f896380109ff72fb5c1e`. Status alone is not compiler
+qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
 | --- | --- |
@@ -14,7 +14,7 @@ qualification; today's isolated repair tests are recorded below.
 | [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; open, not added to recipes |
 | [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; open, not added to recipes |
 | [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. Rebased at maintainer request after PR3708 merged. Head `44fa020c` contains only the identity fix and its regressions: 21 checks successful, 1 Dependabot skip, 0 failures; CodSpeed eight benchmarks untouched. Open and conflict-free, not approved or merged. See [repair evidence](CI-COMPATIBILITY.md) |
-| [3714](https://github.com/veryl-lang/veryl/issues/3714) / [3715](https://github.com/veryl-lang/veryl/pull/3715) | Independent command-only Git backend Clippy failure reproduced on unmodified master. Fix `d62661c0` preserves short-circuit behavior and adds three feature-subset CI checks; local checks and metadata77 pass. Remote CI green (21 successes, one skip); not added to recipes |
+| [3714](https://github.com/veryl-lang/veryl/issues/3714) / [3715](https://github.com/veryl-lang/veryl/pull/3715) | Merged Nov18 as `7f226bcf`; issue closed. Fix preserves short-circuit behavior and adds three feature-subset CI checks. Post-release only; not added to consumer recipes |
 
 PRs 3705, 3706 and 3710 have unchanged heads, and each has 21 successful
 checks plus one skipped Dependabot task. Those are existing CI results, not new
