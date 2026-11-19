@@ -1,7 +1,7 @@
 # Upstream tracking
 
 Checked 2026-11-19. Official release remains v0.22.1; master is
-`f27427a1086983fdfd3f82662284917ec07f7305`. Status alone is not compiler
+`69e37e285da710eb9bee12621360a88bbd4b6c9d`. Status alone is not compiler
 qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
@@ -19,6 +19,10 @@ qualification; dated repair tests are recorded below.
 Do not equate mergeability, upstream CI or an issue being closed with a qualified
 downstream compiler upgrade. The struct-member-width fix remains a documented
 downstream patch; no separate upstream acceptance is claimed here.
+The Nov 19 merge [#3686](https://github.com/veryl-lang/veryl/pull/3686)
+changes bit selection on multidimensional packed struct arrays. Our downstream
+patch sizes expressions when **constructing** a struct; the merge is not evidence
+to retire it. No compiler recipe was changed or newly qualified.
 
 ## PR3704 repair, 2026-11-18
 
