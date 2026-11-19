@@ -24,6 +24,11 @@
 
 ## Current Follow-up
 
+Nov19: PR3704 and PR3710 merged after green final-head CI and both issues
+closed. The latest release is still v0.22.1; #3576 remains open. No recipe,
+consumer pin or installed compiler changes. See UPSTREAM.md for merge IDs;
+the earlier investigation notes below describe the state at the time.
+
 Nov18 repair: PR3704 rebased onto b8b90bc9 and pushed as 22aaaa9a. Maintainer's
 example is RED on original efb1990b, GREEN on unmodified master and repaired head.
 The missing !overridden guard re-evaluated caller VarIds against the child table.
