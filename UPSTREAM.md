@@ -1,7 +1,7 @@
 # Upstream tracking
 
 Checked 2026-11-19. Official release remains v0.22.1; master is
-`7f226bcf73de2337e668f896380109ff72fb5c1e`. Status alone is not compiler
+`e36f236d366bf63e2301e69a4f39ed8cc565b925`. Status alone is not compiler
 qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
@@ -11,15 +11,11 @@ qualification; dated repair tests are recorded below.
 | [3576](https://github.com/veryl-lang/veryl/issues/3576) | Open; last reply is our Nov5 retest. Keep the consumer's explicit no-reuse qualification policy |
 | [3697](https://github.com/veryl-lang/veryl/issues/3697) / [3703](https://github.com/veryl-lang/veryl/pull/3703) | Four-state equality; merged Nov17 as `b8b90bc9`, issue closed. Not in v0.22.1 or the selected downstream recipes; no consumer upgrade performed |
 | [3689](https://github.com/veryl-lang/veryl/issues/3689) / [3704](https://github.com/veryl-lang/veryl/pull/3704) | Conditional constant arrays; maintainer regression repaired on `22aaaa9a`. Remote tests passed, but Windows ARM64 post-job cleanup failed. Maintainer rerun requested. Not added to recipes |
-| [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; open, not added to recipes |
-| [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; open, not added to recipes |
-| [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. Rebased at maintainer request after PR3708 merged. Head `44fa020c` contains only the identity fix and its regressions: 21 checks successful, 1 Dependabot skip, 0 failures; CodSpeed eight benchmarks untouched. Open and conflict-free, not approved or merged. See [repair evidence](CI-COMPATIBILITY.md) |
+| [3694](https://github.com/veryl-lang/veryl/issues/3694) / [3705](https://github.com/veryl-lang/veryl/pull/3705) | Timed-helper settling; merged Nov19 as `b4df4d88`, issue closed. Post-release; not added to recipes |
+| [3696](https://github.com/veryl-lang/veryl/issues/3696) / [3706](https://github.com/veryl-lang/veryl/pull/3706) | Nested generic scope; merged Nov19 as `e36f236d`, issue closed. Post-release; not added to recipes |
+| [3709](https://github.com/veryl-lang/veryl/issues/3709) / [3710](https://github.com/veryl-lang/veryl/pull/3710) | Root override identity; explicit development recipe only. After the requested rebase, `44fa020c` passed 21 checks with one Dependabot skip; eight CodSpeed benchmarks untouched. On Nov19 master was merged into the PR: head `09b2e998`, same three changed files, fresh CI pending. Open; do not carry forward the previous head's qualification. See [repair evidence](CI-COMPATIBILITY.md) |
 | [3714](https://github.com/veryl-lang/veryl/issues/3714) / [3715](https://github.com/veryl-lang/veryl/pull/3715) | Merged Nov18 as `7f226bcf`; issue closed. Fix preserves short-circuit behavior and adds three feature-subset CI checks. Post-release only; not added to consumer recipes |
 
-PRs 3705, 3706 and 3710 have unchanged heads, and each has 21 successful
-checks plus one skipped Dependabot task. Those are existing CI results, not new
-runs. PRs 3705, 3706 and 3710 remain mergeable, without a new review or maintainer
-reply since the previous check.
 Do not equate mergeability, upstream CI or an issue being closed with a qualified
 downstream compiler upgrade. The struct-member-width fix remains a documented
 downstream patch; no separate upstream acceptance is claimed here.
