@@ -1,7 +1,7 @@
 # Upstream tracking
 
-Checked 2026-11-19. Official release remains v0.22.1; master is
-`69e37e285da710eb9bee12621360a88bbd4b6c9d`. Status alone is not compiler
+Checked 2026-11-20. Official release remains v0.22.1; master is
+`2dd4bd113dd5829ce0d5b4b18ee7ea9b373aa1ae`. Status alone is not compiler
 qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
@@ -23,6 +23,10 @@ The Nov 19 merge [#3686](https://github.com/veryl-lang/veryl/pull/3686)
 changes bit selection on multidimensional packed struct arrays. Our downstream
 patch sizes expressions when **constructing** a struct; the merge is not evidence
 to retire it. No compiler recipe was changed or newly qualified.
+The [Nov20 upstream changes](https://github.com/veryl-lang/veryl/compare/69e37e285da710eb9bee12621360a88bbd4b6c9d...2dd4bd113dd5829ce0d5b4b18ee7ea9b373aa1ae)
+include testbench method argument sizing and simulator component changes. Neither
+establishes a fix for struct construction or DUT reuse. No new reply on #3576;
+no consumer pin or patch changed in this check.
 
 ## PR3704 repair, 2026-11-18
 
