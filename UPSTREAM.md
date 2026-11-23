@@ -1,7 +1,7 @@
 # Upstream tracking
 
-Checked 2026-11-20. Official release remains v0.22.1; master is
-`2dd4bd113dd5829ce0d5b4b18ee7ea9b373aa1ae`. Status alone is not compiler
+Checked 2026-11-23. Official release remains v0.22.1; master is
+`7fb66f40f7bbbf6ea3503bf9b335b128bc3a174c`. Status alone is not compiler
 qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
@@ -27,6 +27,10 @@ The [Nov20 upstream changes](https://github.com/veryl-lang/veryl/compare/69e37e2
 include testbench method argument sizing and simulator component changes. Neither
 establishes a fix for struct construction or DUT reuse. No new reply on #3576;
 no consumer pin or patch changed in this check.
+The [Nov23 delta](https://github.com/veryl-lang/veryl/compare/2dd4bd113dd5829ce0d5b4b18ee7ea9b373aa1ae...7fb66f40f7bbbf6ea3503bf9b335b128bc3a174c)
+adds a slide template and removes an unused-assignments workaround. No open
+project-authored PR remains; the latest reply on #3576 is still the Nov5
+retest. No evidence to retire a patch or change consumer qualification.
 
 ## PR3704 repair, 2026-11-18
 
