@@ -24,6 +24,11 @@
 
 ## Current Follow-up
 
+Nov24: see CANDIDATE-75c47070.md for the unpatched upstream baseline and the
+two-patch opt-in candidate. Do not delete backports from the pinned release
+recipes or implicitly switch consumers. Run both independent generic fixtures;
+correct module parameter forwarding does not prove correct interface sizing.
+
 Nov19: PR3704 and PR3710 merged after green final-head CI and both issues
 closed. The latest release is still v0.22.1; #3576 remains open. No recipe,
 consumer pin or installed compiler changes. See UPSTREAM.md for merge IDs;

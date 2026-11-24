@@ -1,7 +1,7 @@
 # Upstream tracking
 
-Checked 2026-11-23. Official release remains v0.22.1; master is
-`7fb66f40f7bbbf6ea3503bf9b335b128bc3a174c`. Status alone is not compiler
+Checked 2026-11-24. Official release remains v0.22.1; the checked master is
+`75c47070ca1f89428390229c3502df409e139645`. Status alone is not compiler
 qualification; dated repair tests are recorded below.
 
 | Issue / PR | State and action |
@@ -27,6 +27,14 @@ The [Nov20 upstream changes](https://github.com/veryl-lang/veryl/compare/69e37e2
 include testbench method argument sizing and simulator component changes. Neither
 establishes a fix for struct construction or DUT reuse. No new reply on #3576;
 no consumer pin or patch changed in this check.
+
+On Nov24 all ten project-authored PRs were merged; #3576 remained open,
+without a reply since Nov5. [The delta since Nov23](https://github.com/veryl-lang/veryl/compare/7fb66f40f7bbbf6ea3503bf9b335b128bc3a174c...75c47070ca1f89428390229c3502df409e139645)
+is a Cargo.lock update. We tested a pinned post-release candidate, **not** a
+new upstream release. The wide-array and dependency-override backports were
+not needed on this commit; the generic and struct-construction defects still
+reproduced. See the [direct comparison](CANDIDATE-75c47070.md). The original
+release recipes and the consumer pins are unchanged.
 The [Nov23 delta](https://github.com/veryl-lang/veryl/compare/2dd4bd113dd5829ce0d5b4b18ee7ea9b373aa1ae...7fb66f40f7bbbf6ea3503bf9b335b128bc3a174c)
 adds a slide template and removes an unused-assignments workaround. No open
 project-authored PR remains; the latest reply on #3576 is still the Nov5

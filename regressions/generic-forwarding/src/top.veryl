@@ -1,0 +1,53 @@
+proto module Contract #(
+    param DEPTH: u32 = 8,
+) (
+    depth: output logic<32>,
+);
+
+module Cell for Contract #(
+    param DEPTH: u32 = 8,
+) (
+    depth: output logic<32>,
+) {
+    assign depth = DEPTH;
+}
+
+module Parent::<N: u32 = 32, CELL: Contract = Cell> (
+    via_const: output logic<32>,
+    via_expr : output logic<32>,
+) {
+    const SETS: u32 = N / 4;
+    inst a: CELL #(
+        DEPTH: SETS,
+    ) (
+        depth: via_const,
+    );
+    inst b: CELL #(
+        DEPTH: N / 4,
+    ) (
+        depth: via_expr,
+    );
+}
+
+#[test(parameter_forwarding)]
+module ForwardingTest {
+    inst clk: $tb::clock_gen #( period: 10 );
+    var c128: logic<32>;
+    var e128: logic<32>;
+    var c256: logic<32>;
+    var e256: logic<32>;
+    inst p128: Parent::<128> (
+        via_const: c128,
+        via_expr : e128,
+    );
+    inst p256: Parent::<256> (
+        via_const: c256,
+        via_expr : e256,
+    );
+    initial {
+        clk.next();
+        $assert(c128 == 32 && e128 == 32, "FORWARD_128");
+        $assert(c256 == 64 && e256 == 64, "FORWARD_256");
+        $finish();
+    }
+}

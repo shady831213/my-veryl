@@ -30,6 +30,12 @@ It fixes repository identity for that native dependency graph. The original two
 recipes remain unchanged for independently pinned consumers. No project is
 automatically upgraded. See [the fix and qualification](DEPENDENCY-OVERRIDE.md).
 
+For testing the post-release upstream commit, select `upstream-75c47070`
+(unpatched diagnostic baseline, **known failing**) or
+`upstream-75c47070-generic-struct` (opt-in repaired candidate).
+[Candidate comparison and reproduction](CANDIDATE-75c47070.md) explains why
+two patches are still needed. These are not new names for the release recipes.
+
 The launcher verifies source and ordered patch hashes, builds with zero patch
 fuzz, serializes installation, records provenance and verifies cached executable
 bytes. `MY_VERYL_CACHE_DIR` selects a compiler cache; the default is `.run/tools`
